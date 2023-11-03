@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                 currentIndex = page;
               });
             },
-            children: [
+            children: const [
               CreatePage(
                 image: 'assets/images/plant-one.png',
                 title: Constants.titleOne,
