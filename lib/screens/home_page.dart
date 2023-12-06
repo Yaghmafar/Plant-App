@@ -88,7 +88,6 @@ class SearchForm extends StatelessWidget {
             color: Constants.primaryColor.withOpacity(0.1),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Expanded(
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: TextFormField(
@@ -113,7 +112,6 @@ class SearchForm extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

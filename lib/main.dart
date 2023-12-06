@@ -8,11 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Plant App',
-      theme: ThemeData(useMaterial3: true),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
