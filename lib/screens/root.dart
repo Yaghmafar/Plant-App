@@ -93,6 +93,7 @@ class _RootPageState extends State<RootPage> {
       bottomNavigationBar: AnimatedBottomNavigationBar(
         splashColor: Constants.primaryColor,
         activeColor: Constants.primaryColor,
+        splashSpeedInMilliseconds: 150,
         activeIndex: bottomIndex,
         inactiveColor: Colors.black.withOpacity(0.5),
         gapLocation: GapLocation.center,
