@@ -149,17 +149,28 @@ class _OpenCameraState extends State<OpenCamera> {
                     ),
                   ),
                 ),
-                // Like Button
+                // Torch Button
                 Container(
                   height: 40.0,
                   width: 40.0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
-                    color: Constants.primaryColor.withOpacity(0.15),
+                    color: Constants.primaryColor.withOpacity(0.2),
                   ),
-                  child: const Icon(
-                    Icons.flash_on,
+                  child: IconButton(
                     color: Colors.white,
+                    icon: ValueListenableBuilder(
+                      valueListenable: cameraController.torchState,
+                      builder: (context, state, child) {
+                        switch (state) {
+                          case TorchState.off:
+                            return const Icon(Icons.flash_off, color: Colors.white);
+                          case TorchState.on:
+                            return const Icon(Icons.flash_on, color: Colors.white);
+                        }
+                      },
+                    ),
+                    onPressed: () => cameraController.toggleTorch(),
                   ),
                 ),
               ],
