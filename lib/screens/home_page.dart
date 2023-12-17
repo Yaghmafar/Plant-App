@@ -3,6 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plant_app/const/constants.dart';
 import 'package:plant_app/models/plant.dart';
 import 'package:plant_app/screens/DetailPage.dart';
+import 'package:plant_app/widgets/new_plant_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -213,100 +214,7 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: _plantList.length,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          child: DetailPage(
-                            plantId: _plantList[index].plantId,
-                          ),
-                          type: PageTransitionType.fade,
-                        ),
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Constants.primaryColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 80,
-                      width: size.width,
-                      padding: const EdgeInsets.only(left: 10),
-                      margin: const EdgeInsets.only(bottom: 10, top: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              SizedBox(
-                                  height: 20,
-                                  child: Image.asset(
-                                      'assets/images/PriceUnit-green.png')),
-                              const SizedBox(width: 5),
-                              Text(
-                                _plantList[index].price.toString().farsiNumber,
-                                style: const TextStyle(
-                                  fontFamily: 'Lalezar',
-                                  color: Constants.primaryColor,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Constants.primaryColor.withOpacity(0.8),
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 5,
-                                right: 0,
-                                left: 0,
-                                child: SizedBox(
-                                  height: 80,
-                                  child:
-                                      Image.asset(_plantList[index].imageURL),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 5,
-                                right: 80,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      _plantList[index].category,
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        fontFamily: 'Vazir',
-                                        color: Constants.blackColor,
-                                      ),
-                                    ),
-                                    Text(
-                                      _plantList[index].plantName,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: 'Vazir',
-                                        color: Constants.blackColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return NewPlantWidget(plantList: _plantList, index: index);
                 },
               ),
             )
@@ -316,6 +224,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 
 class SearchForm extends StatelessWidget {
   const SearchForm({
@@ -361,17 +270,5 @@ class SearchForm extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-extension FarsiNumberExtension on String {
-  String get farsiNumber {
-    const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    const farsi = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    String text = this;
-    for (int i = 0; i < english.length; i++) {
-      text = text.replaceAll(english[i], farsi[i]);
-    }
-    return text;
   }
 }
