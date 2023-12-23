@@ -43,14 +43,65 @@ class _CartPageState extends State<CartPage> {
             )
           : Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
-              child: ListView.builder(
-                itemCount: widget.addToCartPlant.length,
-                itemBuilder: (context, index) {
-                  return NewPlantWidget(
-                    plantList: widget.addToCartPlant,
-                    index: index,
-                  );
-                },
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.addToCartPlant.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return NewPlantWidget(
+                          plantList: widget.addToCartPlant,
+                          index: index,
+                        );
+                      },
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      const Divider(
+                        thickness: 1,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              SizedBox(
+                                height: 20,
+                                child: Image.asset(
+                                    'assets/images/PriceUnit-green.png'),
+                              ),
+                              const SizedBox(width: 5),
+                                const Text(
+                                 '',
+                                style: TextStyle(
+                                  fontFamily: 'Lalezar',
+                                  color: Constants.primaryColor,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'جمع کل',
+                                style: TextStyle(
+                                  fontFamily: 'Lalezar',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  ),
+                ],
               ),
             ),
     );
