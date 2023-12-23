@@ -73,7 +73,7 @@ class _CartPageState extends State<CartPage> {
                               ),
                               const SizedBox(width: 5),
                                 const Text(
-                                 '',
+                                 '22',
                                 style: TextStyle(
                                   fontFamily: 'Lalezar',
                                   color: Constants.primaryColor,
